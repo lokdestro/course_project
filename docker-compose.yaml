@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  app:
+    image: userservice-app:latest
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/userservice
+      SPRING_DATASOURCE_USERNAME: dima
+      SPRING_DATASOURCE_PASSWORD: 1
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: "dima"
+      POSTGRES_PASSWORD: "1"
+      POSTGRES_DB: "userservice"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

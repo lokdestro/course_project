@@ -32,15 +32,7 @@ public class User implements UserDetails {
 
     private String email;
 
-    @Column(name = "phone_number", unique = true)
-    private String phoneNumber;
-
-    @Column(name = "photo", length = 1024)
-    private String photo;
-
-    @Column(name = "deleted_at")
-    private LocalDateTime deletedAt;
-
+    private  String registration_status;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -54,6 +46,6 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return phoneNumber;
+        return email;
     }
 }

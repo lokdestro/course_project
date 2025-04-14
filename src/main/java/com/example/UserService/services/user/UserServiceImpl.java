@@ -14,11 +14,9 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserSerivce {
 
     private final UserRepo userRepo;
-    private final MinioService minioService;
 
-    public UserServiceImpl(UserRepo userRepo, MinioService minioService) {
+    public UserServiceImpl(UserRepo userRepo) {
         this.userRepo = userRepo;
-        this.minioService = minioService;
     }
 
     public User GetByNumber(String phoneNumber) {

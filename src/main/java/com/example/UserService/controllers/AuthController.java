@@ -20,14 +20,14 @@ public class AuthController {
 
     @PostMapping("/signup")
     public ResponseEntity<Long> signUp(@RequestBody SignUpRequest request) {
-        long response = authenticationService.SignUp(request);
-//        ResponseCookie cookie = ResponseCookie.from("theme", response) // Используем переданное значение
-//                .httpOnly(true)
-//                .secure(true)
-//                .path("/")
-//                .maxAge(3600)
-//                .sameSite("Strict")
-//                .build();
+        Long response = authenticationService.SignUp(request);
+        ResponseCookie cookie = ResponseCookie.from("theme", response.toString()) // Используем переданное значение
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .maxAge(3600)
+                .sameSite("Strict")
+                .build();
         return ResponseEntity.ok(response);
     }
 

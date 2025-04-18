@@ -79640,7 +79640,7 @@ var RouteContainer = /*#__PURE__*/function (_Component) {
             element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_CabinetComponent_js__WEBPACK_IMPORTED_MODULE_4__["default"], {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
             path: "*",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_NotFoundComponent_js__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_HomeComponent_js__WEBPACK_IMPORTED_MODULE_3__["default"], {})
           })]
         })
       });
@@ -80330,10 +80330,6 @@ __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || redux__WEBPACK_IMPORTED_MODULE_8__.compose;
 var middlewares = [redux_thunk__WEBPACK_IMPORTED_MODULE_9__.thunk, _middlewares_socketMiddleware_js__WEBPACK_IMPORTED_MODULE_3__["default"]];
 var subscribeValue = [{
-  name: 'message',
-  initial: "",
-  value: ""
-}, {
   name: 'personalNameFirst',
   initial: "",
   value: ""

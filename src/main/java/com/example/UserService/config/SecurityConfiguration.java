@@ -46,6 +46,8 @@ public class SecurityConfiguration {
                         .requestMatchers("/swagger-ui/**", "/swagger-resources/*", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/index.html").permitAll()
+                        .requestMatchers("/favicon.ico").permitAll()
+                        .requestMatchers("/js/index.js").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider())

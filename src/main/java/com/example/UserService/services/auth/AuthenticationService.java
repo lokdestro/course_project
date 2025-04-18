@@ -23,11 +23,10 @@ public class AuthenticationService implements AuthService {
     private final AuthenticationManager authenticationManager;
 
     public long SignUp(SignUpRequest request) {
-        var password = PasswordGenerator.generatePasswordFromEmail(request.getEmail());
 
         User user = User.builder()
                 .email(request.getEmail())
-                .password(password)
+                .password(request.getPassword())
                 .build();
 
         return userService.Create(user).getId();

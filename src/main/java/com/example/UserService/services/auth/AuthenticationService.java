@@ -22,17 +22,20 @@ public class AuthenticationService implements AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public long SignUp(SignUpRequest request) {
+    public String SignUp(SignUpRequest request) {
 
         User user = User.builder()
                 .email(request.getEmail())
-                .password(request.getPassword())
+                .password(passwordEncoder.encode(request.getPassword()))
                 .build();
 
-        return userService.Create(user).getId();
+        userService.Create(user);
+
+        return jwtService.generateToken(user);
     }
 
     public JwtAuthResponse signIn(SignInRequest request) {
+        System.out.println("SIGN IN");
         System.out.println(request.getPassword());
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 request.getEmail(),

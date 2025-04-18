@@ -1,10 +1,8 @@
 package com.example.UserService.services.user;
 
-import com.example.UserService.domain.dto.NewUserRequest;
-import com.example.UserService.services.minio.MinioService;
 import com.example.UserService.domain.model.User;
 import com.example.UserService.repositories.UserRepo;
-import com.example.UserService.services.password.PasswordGenerator;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,23 +17,27 @@ public class UserServiceImpl implements UserSerivce {
         this.userRepo = userRepo;
     }
 
-    public User GetByNumber(String phoneNumber) {
-        return userRepo.findByPhoneNumber(phoneNumber).
+    public User GetByEmail(String email) {
+        return userRepo.findByEmail(email).
                 orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
     @Override
-    public long NewUser(NewUserRequest request) {
-        User user = User.builder()
-                .email(request.getEmail())
-                .password(PasswordGenerator.generatePasswordFromEmail(request.getEmail()))
-                .build();
+    public User Create(User user) {
+        return userRepo.save(user);
+    }
 
-        return userRepo.save(user).getId();
+    public User GetCurrentUser() {
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof User) {
+            String email = (String) ((User) authentication.getPrincipal()).getEmail();
+            return GetByEmail(email);
+        }
+        throw new UsernameNotFoundException("Current user not found");
     }
 
     public UserDetailsService userDetailsService() {
-        return this::GetByNumber;
+        return this::GetByEmail;
     }
 
     @Override

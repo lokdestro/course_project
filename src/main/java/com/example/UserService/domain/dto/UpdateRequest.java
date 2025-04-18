@@ -11,8 +11,5 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 public class UpdateRequest {
     private String name;
-    @JsonProperty("phone_number")
-    private String phoneNumber;
-    private String email;
-    private MultipartFile photo;
+    private String value;
 }

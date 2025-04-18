@@ -1,27 +1,83 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Простой индекс</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-    <h1>Добро пожаловать на мой сайт!</h1>
-</header>
-<main>
-    <section>
-        <h2>О нас</h2>
-        <p>Этот сайт создан для демонстрации простого HTML-документа.</p>
-    </section>
-    <section>
-        <h2>Контакты</h2>
-        <p>Вы можете связаться с нами по электронной почте: example@example.com</p>
-    </section>
-</main>
-<footer>
-    <p>&copy; 2023 Мой Сайт</p>
-</footer>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
+    <style>
+
+    </style>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #9a0101 0%,rgb(156, 22, 22) 100%);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+
+        }
+        .footer {
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            background: #fff;
+            color: #333;
+            text-align: left;
+            font-size: 14px;
+            padding: 14px 30px;
+            margin-top: 16px;
+        }
+        .main {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+        .step-svg {
+            width: 32px;
+            height: 32px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .step-title {
+            font-weight: bold;
+            font-size: 1.15rem;
+        }
+        .step-description {
+
+            font-size: 1rem;
+        }
+
+
+
+    </style>
+
+    <head>
+        <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ler9BorAAAAAGveIJGycVTKs5CGCPcXWOOEUW3L"></script>
+
+    </head>
+<body class="antialiased">
+
+
+
+<div class="main" id="root"
+     {{-- data-api_token="{{Auth::user()->api_token}}" --}}
+     {{-- data-path="{{asset ('/')}}" ---}}
+></div>
+
+
+<script src="js/index.js"></script>
+
 </body>
 </html>

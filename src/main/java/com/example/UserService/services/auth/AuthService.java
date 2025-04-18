@@ -5,6 +5,6 @@ import com.example.UserService.domain.dto.SignInRequest;
 import com.example.UserService.domain.dto.SignUpRequest;
 
 public interface AuthService {
-    JwtAuthResponse SignUp(SignUpRequest request);
+    long SignUp(SignUpRequest request);
     JwtAuthResponse signIn(SignInRequest request);
 }

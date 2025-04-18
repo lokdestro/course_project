@@ -7,6 +7,7 @@ import com.example.UserService.services.auth.AuthService;
 import com.example.UserService.services.auth.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +19,15 @@ public class AuthController {
     private final AuthService authenticationService;
 
     @PostMapping("/signup")
-    public ResponseEntity<JwtAuthResponse> signUp(@RequestBody SignUpRequest request) {
-        JwtAuthResponse response = authenticationService.SignUp(request);
+    public ResponseEntity<Long> signUp(@RequestBody SignUpRequest request) {
+        long response = authenticationService.SignUp(request);
+//        ResponseCookie cookie = ResponseCookie.from("theme", response) // Используем переданное значение
+//                .httpOnly(true)
+//                .secure(true)
+//                .path("/")
+//                .maxAge(3600)
+//                .sameSite("Strict")
+//                .build();
         return ResponseEntity.ok(response);
     }
 

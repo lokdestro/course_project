@@ -23,33 +23,33 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<GetResponse> get() {
-        System.out.println("GET");
-        var user = userService.GetCurrentUser();
-        System.out.println("END GET");
-        var userResp = GetResponse.builder()
-                .name(user.getName())
-                .phoneNumber(String.valueOf(user.getPhoneNumber()))
-                .email(user.getEmail())
-                .photo(user.getPhoto())
-                .build();
+//    @GetMapping("/get")
+//    public ResponseEntity<GetResponse> get() {
+//        System.out.println("GET");
+//        var user = userService.GetCurrentUser();
+//        System.out.println("END GET");
+//        var userResp = GetResponse.builder()
+//                .name(user.getName())
+//                .phoneNumber(String.valueOf(user.getPhoneNumber()))
+//                .email(user.getEmail())
+//                .photo(user.getPhoto())
+//                .build();
+//
+//        return ResponseEntity.ok(userResp);
+//    }
 
-        return ResponseEntity.ok(userResp);
-    }
-
-    @PostMapping("/update")
-    public ResponseEntity<String> update(
-            @ModelAttribute UpdateRequest updateRequest,
-            @RequestParam("photo") MultipartFile photo) throws IOException {
-        updateRequest.setPhoto(photo);
-        userService.Update(updateRequest);
-        return ResponseEntity.ok("Профиль успешно обновлен");
-    }
-
-    @DeleteMapping("/delete")
-    public ResponseEntity<String> delete(@RequestBody DeleteRequest deleteUserProfileRequest) {
-        userService.DeleteCurrentUser();
-        return ResponseEntity.ok("Профиль успешно удален");
-    }
+//    @PostMapping("/update")
+//    public ResponseEntity<String> update(
+//            @ModelAttribute UpdateRequest updateRequest,
+//            @RequestParam("photo") MultipartFile photo) throws IOException {
+//        updateRequest.setPhoto(photo);
+//        userService.Update(updateRequest);
+//        return ResponseEntity.ok("Профиль успешно обновлен");
+//    }
+//
+//    @DeleteMapping("/delete")
+//    public ResponseEntity<String> delete(@RequestBody DeleteRequest deleteUserProfileRequest) {
+//        userService.DeleteCurrentUser();
+//        return ResponseEntity.ok("Профиль успешно удален");
+//    }
 }

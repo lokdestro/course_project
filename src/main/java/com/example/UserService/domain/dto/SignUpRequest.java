@@ -9,12 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SignUpRequest {
-    private String name;
-    private String email;
-
-
-    @JsonProperty("phone_number")
-    private String phoneNumber;
-
-    private String password;
+    String email;
 }

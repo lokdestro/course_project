@@ -45,7 +45,7 @@ public class Personal {
     private String value; // Значение поля
 
     @Column(name = "create_at")
-    private LocalDateTime createAt;
+    private LocalDateTime createAt = LocalDateTime.now();;
 
     public static boolean isValidFieldName(String fieldName) {
         return ALLOWED_FIELD_NAMES.contains(fieldName);

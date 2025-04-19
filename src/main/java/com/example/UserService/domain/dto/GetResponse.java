@@ -10,8 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class GetResponse {
-    private String name;
-    private String phoneNumber;
     private String email;
-    private String photo;
 }

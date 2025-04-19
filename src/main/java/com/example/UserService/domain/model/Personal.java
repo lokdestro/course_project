@@ -18,22 +18,6 @@ import java.util.List;
 @Table(name = "personal")
 public class Personal {
 
-    public static final List<String> ALLOWED_FIELD_NAMES = Arrays.asList(
-            "first_name",
-            "second_name",
-            "patronymic_name",
-            "birth_date",
-            "phone",
-            "email",
-            "passport_series",
-            "passport_number",
-            "address_type",
-            "city",
-            "street",
-            "building",
-            "apartment"
-    );
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,11 +31,4 @@ public class Personal {
     @Column(name = "create_at")
     private LocalDateTime createAt = LocalDateTime.now();;
 
-    public static boolean isValidFieldName(String fieldName) {
-        return ALLOWED_FIELD_NAMES.contains(fieldName);
-    }
-
-    public boolean isCurrentFieldValid() {
-        return isValidFieldName(this.name);
-    }
 }

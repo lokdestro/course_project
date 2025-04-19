@@ -1,12 +1,14 @@
 package com.example.UserService.domain.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeleteRequest {
-    private Long id;
+@Builder
+public class GetPersonalResponse {
+    private String value;
 }

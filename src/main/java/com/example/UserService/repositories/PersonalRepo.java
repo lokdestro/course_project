@@ -21,4 +21,6 @@ public interface PersonalRepo extends JpaRepository<Personal, Long> {
             @Param("name") String name,
             @Param("id") Long id,
             @Param("targetDate") LocalDateTime targetDate);
+
+    Optional<Personal> findFirstByUserIdAndNameOrderByCreateAtDesc(Long userId, String name);
 }

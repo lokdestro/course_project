@@ -9,6 +9,7 @@ import com.example.UserService.services.user.UserSerivce;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -67,6 +68,21 @@ public class PersonalServiceImpl implements PersonalService {
             var resp = GetPersonalResponse.builder().value(data.get().getValue()).build();
         }
         throw new RuntimeException();
+    }
+
+    public List<String> CheckRegistrationStatus() {
+        List<String> status = new ArrayList<>();
+
+        var user_id = userSerivce.GetCurrentUser().getId();
+
+        for (var field : ALLOWED_FIELD_NAMES) {
+            var data = personalRepo.findFirstByUserIdAndNameOrderByCreateAtDesc(user_id, field);
+            if (data.isEmpty()) {
+                status.add(field);
+            }
+        }
+
+        return status;
     }
 
 
